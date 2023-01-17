@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RoomExample</string>
+    <string name="main_label_note">Note</string>
+    <string name="main_label_notes">Notes</string>
+    <string name="main_memo_hint">Please enter a note..</string>
+    <string name="main_btn_label_write">Write</string>
+</resources>

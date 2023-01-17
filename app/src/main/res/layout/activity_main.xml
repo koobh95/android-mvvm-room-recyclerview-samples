@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.demo.view.note.MainViewModel" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scroll_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            tools:context="com.example.view.note.MainActivity">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/main_label_note"
+                android:textSize="25sp"
+                android:gravity="center_vertical"
+                android:id="@+id/tv_label_note"
+                app:flow_verticalBias="0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/et_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="5dp"
+                android:gravity="top"
+                android:background="@drawable/border_white"
+                android:hint="@string/main_memo_hint"
+                android:autofillHints="no"
+                android:inputType="text"
+                android:text="@={viewModel.noteContents}"
+                android:id="@+id/et_contents"
+                app:layout_constraintTop_toBottomOf="@+id/tv_label_note"
+                app:layout_constraintBottom_toTopOf="@id/btn_write"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="bottom"
+                android:paddingBottom="5dp"
+                android:textSize="20sp"
+                android:text="@string/main_label_notes"
+                android:id="@+id/tv_label_list"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintTop_toBottomOf="@+id/et_contents"
+                app:layout_constraintBottom_toTopOf="@id/recyclerview_notes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/border_white"
+                android:text="@string/main_btn_label_write"
+                android:onClick="@{viewModel::onClick}"
+                android:id="@+id/btn_write"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toBottomOf="@+id/et_contents"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerview_notes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:id="@+id/recyclerview_notes"
+                app:layout_constraintTop_toBottomOf="@+id/btn_write"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
